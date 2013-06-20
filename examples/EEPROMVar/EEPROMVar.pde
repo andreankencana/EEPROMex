@@ -30,8 +30,8 @@ void readAndWriteVar(EEPROMVar<float> &floatVar) {
     floatVar = 0.0;      // reset 
     floatVar.restore();  // restore EEPROMVar to EEPROM
     
-    Serial.print("adress: ");
-    Serial.println(floatVar.getAdress());
+    Serial.print("address: ");
+    Serial.println(floatVar.getAddress());
     Serial.print("input: ");
     Serial.println(input);
     Serial.print("output: ");

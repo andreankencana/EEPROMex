@@ -9,7 +9,7 @@
 #include <EEPROMex.h>
 
 #include "Arduino.h"
-void issuedAdresses();
+void issuedAddresses();
 void readAndWriteByte();
 void readAndWriteInt();
 void readAndWriteLong();
@@ -18,7 +18,7 @@ void updateAndReadDouble();
 void writeAndReadCharArray();
 void writeAndReadByteArray();
 void waitUntilReady();
-void errorChecking(int adress);
+void errorChecking(int address);
 void setup();
 void loop();
 const int maxAllowedWrites = 80;
@@ -33,12 +33,12 @@ int addressByteArray;
 int addressCharArray;
 
 
-void issuedAdresses() {
+void issuedAddresses() {
     Serial.println("-----------------------------------");     
-    Serial.println("Following adresses have been issued");     
+    Serial.println("Following addresses have been issued");     
     Serial.println("-----------------------------------");      
     
-    Serial.println("adress \t\t size");
+    Serial.println("address \t\t size");
     Serial.print(addressByte);      Serial.print(" \t\t "); Serial.print(sizeof(byte)); Serial.println(" (byte)");
     Serial.print(addressInt);       Serial.print(" \t\t "); Serial.print(sizeof(int));  Serial.println(" (int)");
     Serial.print(addressLong);      Serial.print(" \t\t "); Serial.print(sizeof(long)); Serial.println(" (long)"); 
@@ -59,7 +59,7 @@ void readAndWriteByte() {
     EEPROM.write(addressByte,input);   // same function as writeByte
     output = EEPROM.read(addressByte); // same function as readByte
     
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressByte);
     Serial.print("input: ");
     Serial.println(input);
@@ -80,7 +80,7 @@ void readAndWriteInt() {
     EEPROM.writeInt(addressInt,input);
     output = EEPROM.readInt(addressInt);
     
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressInt);
     Serial.print("input: ");
     Serial.println(input);
@@ -100,7 +100,7 @@ void readAndWriteLong() {
     EEPROM.writeLong(addressLong,input);
     output = EEPROM.readLong(addressLong);
     
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressLong);
     Serial.print("input: ");
     Serial.println(input);
@@ -120,7 +120,7 @@ void readAndWriteFloat() {
     EEPROM.writeFloat(addressFloat,input);
     output = EEPROM.readFloat(addressFloat);
     
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressFloat);
     Serial.print("input: ");
     Serial.println(input);
@@ -140,7 +140,7 @@ void updateAndReadDouble() {
     EEPROM.updateDouble(addressDouble,input);   
     output = EEPROM.readDouble(addressDouble);
     
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressDouble);
     Serial.print("input: ");
     Serial.println(input);
@@ -161,7 +161,7 @@ void writeAndReadCharArray() {
     EEPROM.writeBlock<char>(addressCharArray, input, 7);
     EEPROM.readBlock<char>(addressCharArray, output, 7);
 
-    Serial.print("adress: ");
+    Serial.print("address: ");
     Serial.println(addressCharArray);
     Serial.print("input: ");
     Serial.println(input);
@@ -281,7 +281,7 @@ void waitUntilReady() {
 }
 
 // Check if we get errors when writing too much or out of bounds
-void errorChecking(int adress) {
+void errorChecking(int address) {
     Serial.println("-------------------------------------------------------------");     
     Serial.println("Check if we get errors when writing too much or out of bounds");     
     Serial.println("-------------------------------------------------------------");   
@@ -294,7 +294,7 @@ void errorChecking(int adress) {
     Serial.println("Trying to exceed number of writes");        
     for(int i=1;i<=20; i++)
     {
-        if (!EEPROM.writeLong(adress,1000)) { return; }    
+        if (!EEPROM.writeLong(address,1000)) { return; }    
     }
     Serial.println();    
 }
@@ -314,7 +314,7 @@ void setup()
   delay(100);
   Serial.println("");       
   
-  // Always get the adresses first and in the same order
+  // Always get the addresses first and in the same order
   addressByte      = EEPROM.getAddress(sizeof(byte));
   addressInt       = EEPROM.getAddress(sizeof(int));
   addressLong      = EEPROM.getAddress(sizeof(long));
@@ -323,8 +323,8 @@ void setup()
   addressByteArray = EEPROM.getAddress(sizeof(byte)*7);  
   addressCharArray = EEPROM.getAddress(sizeof(char)*7);  
 
-  // Show adresses that have been issued
-  issuedAdresses();
+  // Show addresses that have been issued
+  issuedAddresses();
 
   // Read and write different data primitives
   readAndWriteByte(); 

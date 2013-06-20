@@ -36,16 +36,16 @@ template<typename T> class EEPROMBackupVar
 {
 	public:
 	  EEPROMBackupVar(T init, int range, compareFunction compareFunc,unsigned long time=0) {
-		adressRange = range;
+		addressRange = range;
 		timeBetweenSaves = time*1000; // from sec to milisec
-		baseAddress = EEPROM.getAdress(sizeof(T)*adressRange);	
+		baseAddress = EEPROM.getAddress(sizeof(T)*addressRange);	
 		function = compareFunc;
 		position = -1;		
 		var = init;		
 	  }
 	  	 	
 	  void initialize(T init){	    
-		baseAddress = EEPROM.getAdress(sizeof(T)*adressRange);
+		baseAddress = EEPROM.getAddress(sizeof(T)*addressRange);
 		retreive(init);	
 	  }				
 			  
@@ -123,7 +123,7 @@ template<typename T> class EEPROMBackupVar
 		position = 0;
 		var = init;		
 		// Loop through all stored locations to see which one is the most up to date
-		for(int i=0;i<adressRange; i++) { 
+		for(int i=0;i<addressRange; i++) { 
 			EEPROM.readBlock<T>(address(i), candidateValue);
 			if (i==0) { currentValue = candidateValue; }
 			if (compare(currentValue,candidateValue)) {
@@ -140,7 +140,7 @@ template<typename T> class EEPROMBackupVar
 	  void clearMemory(T init){	    
 	
 		// Loop through all stored locations and save initialize value
-		for(int i=0;i<adressRange; i++) { 
+		for(int i=0;i<addressRange; i++) { 
 		    Serial.print("save at position ");
 			Serial.println(i);
 			EEPROM.writeBlock<T>(address(i), init);
@@ -160,7 +160,7 @@ template<typename T> class EEPROMBackupVar
 	  
       void nextPosition() {
 	  	position++;
-		if (position>=adressRange) { position=0; }
+		if (position>=addressRange) { position=0; }
 	  }
 	  
 	  bool compare(T current, T candidate) {
@@ -169,7 +169,7 @@ template<typename T> class EEPROMBackupVar
 	
 	  T var;
 	  int baseAddress;
-	  int adressRange;
+	  int addressRange;
 	  int position;
 	  unsigned long timeBetweenSaves;
 	  unsigned long latestupdatedTime;
