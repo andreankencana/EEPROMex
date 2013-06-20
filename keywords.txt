@@ -1,46 +1,47 @@
 #######################################
-# Syntax Coloring Map For IRremote
+# Syntax Coloring Map For EEPROMEx
 #######################################
 
 #######################################
-# Datatypes (KEYWORD1)
+# Methods and Functions EEPROMEx (KEYWORD2)
 #######################################
 
-decode_results KEYWORD1
-IRrecv KEYWORD1
-IRsend KEYWORD1
+isReady			KEYWORD2
+setMemPool		KEYWORD2
+setMaxAllowedWrites	KEYWORD2
+getAdress		KEYWORD2
+
+read			KEYWORD2
+readByte		KEYWORD2
+readInt			KEYWORD2
+readLong		KEYWORD2
+readFloat		KEYWORD2
+readDouble		KEYWORD2
+readBlock		KEYWORD2
+
+write			KEYWORD2
+writeByte		KEYWORD2
+writeInt		KEYWORD2
+writeLong		KEYWORD2
+writeFloat		KEYWORD2
+writeDouble		KEYWORD2
+writeBlock		KEYWORD2
+
+update			KEYWORD2
+updateByte		KEYWORD2
+updateInt		KEYWORD2
+updateLong		KEYWORD2
+updateFloat		KEYWORD2
+updateDouble	KEYWORD2
+updateBlock		KEYWORD2
 
 #######################################
-# Methods and Functions (KEYWORD2)
+# Instances (KEYWORD2)
 #######################################
 
-blink13 KEYWORD2
-decode KEYWORD2
-enableIRIn KEYWORD2
-resume KEYWORD2
-enableIROut KEYWORD2
-sendNEC KEYWORD2
-sendSony KEYWORD2
-sendRaw KEYWORD2
-sendRC5 KEYWORD2
-sendRC6 KEYWORD2
-sendDISH KEYWORD2
-sendSharp KEYWORD2
-sendPanasonic KEYWORD2
-sendJVC KEYWORD2
+EEPROMEx	KEYWORD2
 
-#
 #######################################
 # Constants (LITERAL1)
 #######################################
 
-NEC LITERAL1
-SONY LITERAL1
-RC5 LITERAL1
-RC6 LITERAL1
-DISH LITERAL1
-SHARP LITERAL1
-PANASONIC LITERAL1
-JVC LITERAL1
-UNKNOWN LITERAL1
-REPEAT LITERAL1
